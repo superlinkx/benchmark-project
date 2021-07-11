@@ -1,0 +1,16 @@
+version: "3"
+services:
+  phpfpm:
+    env_file: ../../../.env
+    build:
+      context: ../..
+      dockerfile: containers/nginx/php.Dockerfile
+
+  phpfpm-nginx:
+    build:
+      context: ../..
+      dockerfile: containers/nginx/nginx.Dockerfile
+    environment:
+      FASTCGI_HOST: phpfpm:9000
+    ports:
+      - 2929:80

@@ -1,0 +1,14 @@
+version: "3"
+services:
+  node-nginx:
+    env_file: ../../../.env
+    build:
+      context: ../..
+      dockerfile: containers/nginx/Dockerfile
+    ports:
+      - 2929:80
+  nodehttp:
+    env_file: ../../../.env
+    build:
+      context: ../..
+      dockerfile: containers/http/Dockerfile

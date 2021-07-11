@@ -1,0 +1,9 @@
+version: "3"
+services:
+  node-http:
+    env_file: ../../../.env
+    build:
+      context: ../..
+      dockerfile: containers/http/Dockerfile
+    ports:
+      - 5000:5000
