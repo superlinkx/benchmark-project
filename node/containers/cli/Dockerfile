@@ -4,7 +4,7 @@ ENV USER_ID=1000
 WORKDIR /src
 RUN npm install --save yargs
 
-COPY functions/ /src
+COPY src/ /src
 
 RUN mkdir /results
 RUN chown $USER_ID:$USER_ID /results
