@@ -25,10 +25,18 @@ If Docker isn't your thing, you could potentially setup all the environments loc
 ----|_ functions/ - Individual functions to benchmark  
 ----|\_ lib/ - Utilities needed for writing benchmarks
 
-## Env
+## Benchmark Time
 
-There is a `.env.template` file tracked in the project root. If your uid is 1000, you don't need to worry about it. But if it isn't, you can change the `USER_ID` var to match your uid. Use `id -u` to check your uid. This ensures that files written to the `results` directory are owned by your user.
+CLI benchmarks use wall clock timers. This gives the real-time it took each iteration, but doesn't distinguish how much actual processor time was used. A future improvement would be to also check the processor time for each benchmark.
 
 ## Memory Stat
 
 The current memory stats in the CLI benchmarks is just a memory snapshot at the end of each function benchmark run. It's not particularly indicative of much since a large portion of the changes in memory usage can likely be contributed to my benchmarking code. A more meaningful memory stat should be found and implemented before doing memory usage comparisons.
+
+## Env
+
+There is a `.env.template` file tracked in the project root. If your uid is 1000, you don't need to worry about it. But if it isn't, you can change the `USER_ID` var to match your uid. Use `id -u` to check your uid. This ensures that files written to the `results` directory are owned by your user.
+
+## Contribute
+
+Feel free to file an issue with any features you'd like to see. If you find a bug, please create a new issue with as much detail as possible. Pull requests are welcome, just file an issue to track it.
