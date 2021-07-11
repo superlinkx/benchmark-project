@@ -1,8 +1,10 @@
 const yargs = require("yargs");
 const fs = require("fs");
 const Benchmark = require("./lib/benchmark");
+// Functions
 const concat = require("./functions/concat");
 const counter = require("./functions/counter");
+const arrayfill = require("./functions/arrayfill");
 
 // Get iterations
 const argv = yargs.option("iter", {
@@ -22,6 +24,7 @@ benchmark
   .setIter(iterations)
   .add("Concatenate Strings", concat)
   .add("Counter", counter)
+  .add("Array Fill", arrayfill)
   .run();
 
 let resultsJSON = benchmark.getJSON();

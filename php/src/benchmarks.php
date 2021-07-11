@@ -2,6 +2,7 @@
 require_once(__DIR__ . "/lib/benchmark.php");
 require_once(__DIR__ . "/functions/concat.php");
 require_once(__DIR__ . "/functions/counter.php");
+require_once(__DIR__ . "/functions/arrayfill.php");
 
 use Helper\Benchmark;
 
@@ -21,6 +22,7 @@ $benchmark
   ->setIter($iterations)
   ->add('Concatenate Strings', 'concat')
   ->add('Counter', 'counter')
+  ->add('Array Fill', 'arrayfill')
   ->run();
 
 $resultsJSON = $benchmark->getJSON();
