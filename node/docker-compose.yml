@@ -1,0 +1,10 @@
+version: "3"
+services:
+  node-cli:
+    env_file: ../.env
+    build:
+      context: .
+      dockerfile: containers/cli/Dockerfile
+    command: "node ./benchmarks.js -i 1000"
+    volumes:
+      - "../results:/results"

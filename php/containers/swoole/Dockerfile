@@ -1,0 +1,1 @@
+FROM phpswoole/swoole:4.6-php8.0
