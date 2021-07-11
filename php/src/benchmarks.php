@@ -31,6 +31,6 @@ $benchmark
   ->run();
 
 $resultsJSON = $benchmark->getJSON();
-$results_file = fopen("/results/results-php-${iterations}.json", "w");
+$results_file = fopen("/results/results-php-cli-${iterations}.json", "w");
 fwrite($results_file, $resultsJSON);
 fclose($results_file);

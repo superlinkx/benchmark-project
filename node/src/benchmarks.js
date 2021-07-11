@@ -33,7 +33,7 @@ benchmark
 
 let resultsJSON = benchmark.getJSON();
 try {
-  fs.writeFileSync(`/results/results-node-${iterations}.json`, resultsJSON);
+  fs.writeFileSync(`/results/results-node-cli-${iterations}.json`, resultsJSON);
 } catch (err) {
   console.error("Error while writing results:", err);
 }

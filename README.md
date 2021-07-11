@@ -28,3 +28,7 @@ If Docker isn't your thing, you could potentially setup all the environments loc
 ## Env
 
 There is a `.env.template` file tracked in the project root. If your uid is 1000, you don't need to worry about it. But if it isn't, you can change the `USER_ID` var to match your uid. Use `id -u` to check your uid. This ensures that files written to the `results` directory are owned by your user.
+
+## Memory Stat
+
+The current memory stats in the CLI benchmarks is just a memory snapshot at the end of each function benchmark run. It's not particularly indicative of much since a large portion of the changes in memory usage can likely be contributed to my benchmarking code. A more meaningful memory stat should be found and implemented before doing memory usage comparisons.
