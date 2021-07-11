@@ -5,6 +5,8 @@ const Benchmark = require("./lib/benchmark");
 const concat = require("./functions/concat");
 const counter = require("./functions/counter");
 const arrayfill = require("./functions/arrayfill");
+const mapfill = require("./functions/mapfill");
+const fileread = require("./functions/fileread");
 
 // Get iterations
 const argv = yargs.option("iter", {
@@ -25,6 +27,8 @@ benchmark
   .add("Concatenate Strings", concat)
   .add("Counter", counter)
   .add("Array Fill", arrayfill)
+  .add("Map Fill", mapfill)
+  .add("File Read", fileread)
   .run();
 
 let resultsJSON = benchmark.getJSON();
