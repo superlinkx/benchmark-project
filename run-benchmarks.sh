@@ -12,14 +12,20 @@ echo "Building Node CLI Benchmarks"
 docker-compose -f node/containers/cli/docker-compose.yml build > /dev/null
 echo "Running Node CLI Benchmarks"
 docker-compose -f node/containers/cli/docker-compose.yml up
-### CLI
 ## PHP
 # Benchmarks
 echo "Building PHP CLI Benchmarks"
 docker-compose -f php/containers/cli/docker-compose.yml build > /dev/null
 echo "Running PHP CLI Benchmarks"
 docker-compose -f php/containers/cli/docker-compose.yml up
+## Go
+# Benchmarks
+echo "Building Go CLI Benchmarks"
+docker-compose -f go/containers/cli/docker-compose.yml build > /dev/null
+echo "Running Go CLI Benchmarks"
+docker-compose -f go/containers/cli/docker-compose.yml up
 
+exit
 ### API
 ## Node
 # HTTP

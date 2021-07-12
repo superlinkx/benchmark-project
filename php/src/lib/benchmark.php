@@ -56,8 +56,7 @@ class Benchmark
       $this->results[$name] = $this->runBenchmark($benchmark);
       printf("Direct Time Average: %sµs\n", $this->results[$name]['average']);
       printf(
-        "Memory Usage: (rss: %sMB, heapTotal: %sMB, heapUsed: %sMB)\n",
-        number_format($this->results[$name]['memUsed']['rss'] / (1024 * 1024), 6),
+        "Memory Usage: (heapTotal: %sMB, heapUsed: %sMB)\n",
         number_format($this->results[$name]['memUsed']['heapTotal'] / (1024 * 1024), 6),
         number_format($this->results[$name]['memUsed']['heapUsed'] / (1024 * 1024), 6)
       );

@@ -37,10 +37,7 @@ class Benchmark {
       this.#results[name] = this.#runBenchmark(benchmark);
       console.info(`Direct Time Average: ${this.#results[name].average}µs`);
       console.info(
-        `Memory Usage: (rss: ${(
-          this.#results[name].memUsed.rss /
-          (1024 * 1024)
-        ).toFixed(6)}MB, heapTotal: ${(
+        `Memory Usage: (heapTotal: ${(
           this.#results[name].memUsed.heapTotal /
           (1024 * 1024)
         ).toFixed(6)}MB, heapUsed: ${(

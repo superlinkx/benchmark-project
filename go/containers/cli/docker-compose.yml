@@ -1,0 +1,10 @@
+version: "3"
+services:
+  go-cli:
+    env_file: ../../../.env
+    build:
+      context: ../..
+      dockerfile: containers/cli/Dockerfile
+    command: "./benchmarks -iter 1000"
+    volumes:
+      - "../../../results:/results"
