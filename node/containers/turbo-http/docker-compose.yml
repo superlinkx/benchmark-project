@@ -6,4 +6,4 @@ services:
       context: ../..
       dockerfile: containers/turbo-http/Dockerfile
     ports:
-      - 5001:5000
+      - 5000:5000

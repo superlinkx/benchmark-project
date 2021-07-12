@@ -15,13 +15,14 @@ class Router {
   }
   handle(req, res) {
     let handler = this.#routes.get(req.url);
-    let headers = { "Content-Type": "application/json" };
     if (handler) {
-      res.writeHead(200, headers);
-      res.end(JSON.stringify(handler()));
+      res.statusCode = 200;
+      res.setHeader("Content-Type", "application/json");
+      res.write(JSON.stringify(handler()));
     } else {
-      res.writeHead(404, headers);
-      res.end(JSON.stringify(this.#routes.get("404")()));
+      res.statusCode = 404;
+      res.setHeader("Content-Type", "application/json");
+      res.write(JSON.stringify(this.#routes.get("404")()));
     }
   }
 }
