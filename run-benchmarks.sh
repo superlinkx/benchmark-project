@@ -50,20 +50,6 @@ docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http:
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/fileread > $RESULTSDIR/results-node-nginx-fileread.txt
 echo "Tearing Down Node Nginx Benchmarks"
 docker-compose -f node/containers/nginx/docker-compose.yml down > /dev/null
-# Turbo HTTP
-echo "Setting Up Node Turbo HTTP Benchmarks"
-docker-compose -f node/containers/turbo-http/docker-compose.yml build > /dev/null
-docker-compose -f node/containers/turbo-http/docker-compose.yml up -d > /dev/null
-echo "Running Node Turbo HTTP wrk Benchmarks"
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/ > $RESULTSDIR/results-node-turbo-root.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/concat > $RESULTSDIR/results-node-turbo-concat.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/counter > $RESULTSDIR/results-node-turbo-counter.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/arrayfill > $RESULTSDIR/results-node-turbo-arrayfill.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/mapfill > $RESULTSDIR/results-node-turbo-mapfill.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/jsondecode > $RESULTSDIR/results-node-turbo-jsondecode.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/fileread > $RESULTSDIR/results-node-turbo-fileread.txt
-echo "Tearing Down Node Turbo HTTP Benchmarks"
-docker-compose -f node/containers/turbo-http/docker-compose.yml down > /dev/null
 ## PHP
 # Nginx
 echo "Setting Up PHP Nginx Benchmarks"
