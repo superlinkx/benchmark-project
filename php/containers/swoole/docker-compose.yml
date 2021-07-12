@@ -1,0 +1,10 @@
+version: "3"
+services:
+  php-cli:
+    env_file: ../../../.env
+    build:
+      context: ../..
+      dockerfile: containers/swoole/Dockerfile
+    #command: tail -f /dev/null
+    ports:
+      - 9900:9900

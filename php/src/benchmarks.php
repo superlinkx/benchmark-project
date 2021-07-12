@@ -23,7 +23,7 @@ if ((int)$iterations < 1) {
 }
 
 // Setup
-$jsonPath = __DIR__ . "/data/demo.txt";
+$jsonPath = __DIR__ . "/data/demo.json";
 $fp = fopen($jsonPath, "r");
 $jsonData = fread($fp, filesize($jsonPath));
 fclose($fp);

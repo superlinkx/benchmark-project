@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 require_once(__DIR__ . "/router.php");
 // Functions
 require_once(__DIR__ . "/../../functions/concat.php");
@@ -9,9 +12,13 @@ require_once(__DIR__ . "/../../functions/jsondecode.php");
 require_once(__DIR__ . "/../../functions/fileread.php");
 
 use Application\Router;
+use Swoole\Http\Server;
+use Swoole\Http\Request;
+use Swoole\Http\Response;
+
 
 // Setup
-$jsonPath = __DIR__ . "/data/demo.json";
+$jsonPath = __DIR__ . "/../../data/demo.json";
 $fp = fopen($jsonPath, "r");
 $jsonData = fread($fp, filesize($jsonPath));
 fclose($fp);
@@ -20,7 +27,6 @@ fclose($fp);
 $router = new Router();
 $router
   ->add404Handler(function () {
-    http_response_code(404);
     return ["error" => "Route Not Found"];
   })
   ->addRoute("/", function () {
@@ -46,4 +52,13 @@ $router
     return ["data" => fileread(__DIR__ . "/../../data/demo.txt")];
   });
 
-$router->handle();
+$http = new Server('0.0.0.0', 9900);
+
+$http->on(
+  "request",
+  function (Request $request, Response $response) {
+    global $router;
+    $router->handle($request, $response);
+  }
+);
+$http->start();
