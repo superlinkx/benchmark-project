@@ -70,13 +70,13 @@ echo "Setting Up PHP Swoole Benchmarks"
 docker-compose -f php/containers/swoole/docker-compose.yml build > /dev/null
 docker-compose -f php/containers/swoole/docker-compose.yml up -d > /dev/null
 echo "Running PHP Swoole wrk Benchmarks"
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/ > $RESULTSDIR/results-php-swoole-root.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/concat > $RESULTSDIR/results-php-swoole-concat.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/counter > $RESULTSDIR/results-php-swoole-counter.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/arrayfill > $RESULTSDIR/results-php-swoole-arrayfill.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/mapfill > $RESULTSDIR/results-php-swoole-mapfill.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/jsondecode > $RESULTSDIR/results-php-swoole-jsondecode.txt
-docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/fileread > $RESULTSDIR/results-php-swoole-fileread.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:9900/ > $RESULTSDIR/results-php-swoole-root.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:9900/concat > $RESULTSDIR/results-php-swoole-concat.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:9900/counter > $RESULTSDIR/results-php-swoole-counter.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:9900/arrayfill > $RESULTSDIR/results-php-swoole-arrayfill.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:9900/mapfill > $RESULTSDIR/results-php-swoole-mapfill.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:9900/jsondecode > $RESULTSDIR/results-php-swoole-jsondecode.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:9900/fileread > $RESULTSDIR/results-php-swoole-fileread.txt
 echo "Tearing Down PHP Swoole Benchmarks"
 docker-compose -f php/containers/swoole/docker-compose.yml down > /dev/null
 
