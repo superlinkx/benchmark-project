@@ -1,0 +1,9 @@
+version: "3"
+services:
+  node-turbo:
+    env_file: ../../../.env
+    build:
+      context: ../..
+      dockerfile: containers/turbo-http/Dockerfile
+    ports:
+      - 5001:5000
