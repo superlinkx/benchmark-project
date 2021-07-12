@@ -32,6 +32,7 @@ docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http:
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/counter > $RESULTSDIR/results-node-http-counter.txt
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/arrayfill > $RESULTSDIR/results-node-http-arrayfill.txt
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/mapfill > $RESULTSDIR/results-node-http-mapfill.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/jsondecode > $RESULTSDIR/results-node-http-jsondecode.txt
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:5000/fileread > $RESULTSDIR/results-node-http-fileread.txt
 echo "Tearing Down Node HTTP Benchmarks"
 docker-compose -f node/containers/http/docker-compose.yml down > /dev/null
@@ -45,6 +46,7 @@ docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http:
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/counter > $RESULTSDIR/results-node-nginx-counter.txt
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/arrayfill > $RESULTSDIR/results-node-nginx-arrayfill.txt
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/mapfill > $RESULTSDIR/results-node-nginx-mapfill.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/jsondecode > $RESULTSDIR/results-node-nginx-jsondecode.txt
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/fileread > $RESULTSDIR/results-node-nginx-fileread.txt
 echo "Tearing Down Node Nginx Benchmarks"
 docker-compose -f node/containers/nginx/docker-compose.yml down > /dev/null
@@ -59,8 +61,23 @@ docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http:
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/counter > $RESULTSDIR/results-php-nginx-counter.txt
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/arrayfill > $RESULTSDIR/results-php-nginx-arrayfill.txt
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/mapfill > $RESULTSDIR/results-php-nginx-mapfill.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/jsondecode > $RESULTSDIR/results-php-nginx-jsondecode.txt
 docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/fileread > $RESULTSDIR/results-php-nginx-fileread.txt
 echo "Tearing Down PHP Nginx Benchmarks"
 docker-compose -f php/containers/nginx/docker-compose.yml down > /dev/null
+# Swoole
+echo "Setting Up PHP Swoole Benchmarks"
+docker-compose -f php/containers/swoole/docker-compose.yml build > /dev/null
+docker-compose -f php/containers/swoole/docker-compose.yml up -d > /dev/null
+echo "Running PHP Swoole wrk Benchmarks"
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/ > $RESULTSDIR/results-php-swoole-root.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/concat > $RESULTSDIR/results-php-swoole-concat.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/counter > $RESULTSDIR/results-php-swoole-counter.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/arrayfill > $RESULTSDIR/results-php-swoole-arrayfill.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/mapfill > $RESULTSDIR/results-php-swoole-mapfill.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/jsondecode > $RESULTSDIR/results-php-swoole-jsondecode.txt
+docker run --rm --network=host williamyeh/wrk $WRKTHREAD $WRKTIME $WRKCONN http://localhost:2929/fileread > $RESULTSDIR/results-php-swoole-fileread.txt
+echo "Tearing Down PHP Swoole Benchmarks"
+docker-compose -f php/containers/swoole/docker-compose.yml down > /dev/null
 
 echo "Benchmarking Complete :)"
