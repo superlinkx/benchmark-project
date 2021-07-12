@@ -1,9 +1,8 @@
 <?php
-function fileread()
+function fileread($path)
 {
-  $demoFilePath = __DIR__ . "/../data/demo.txt";
-  $demoFile = fopen($demoFilePath, "r");
-  $content = fread($demoFile, filesize($demoFilePath));
-  fclose($demoFile);
+  $file = fopen($path, "r");
+  $content = fread($file, filesize($path));
+  fclose($file);
   return $content;
 }

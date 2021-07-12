@@ -8,7 +8,7 @@ class Benchmark {
     for (let i = 0; i < this.#iterations; i++) {
       let start, end, cpuTime;
       start = process.hrtime.bigint();
-      benchmark();
+      benchmark.benchmark(...benchmark.params);
       end = process.hrtime.bigint();
       cpuTime = Number(end - start);
       rawTimings.push(cpuTime);
@@ -27,8 +27,8 @@ class Benchmark {
     this.#iterations = iterations;
     return this;
   }
-  add(name, benchmark) {
-    this.#benchmarks.set(name, benchmark);
+  add(name, benchmark, ...params) {
+    this.#benchmarks.set(name, { benchmark, params });
     return this;
   }
   run() {

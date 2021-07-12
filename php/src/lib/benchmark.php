@@ -23,7 +23,7 @@ class Benchmark
     $rawTimings = [];
     for ($i = 0; $i < $this->iterations; $i++) {
       $start = microtime(true);
-      $benchmark();
+      $benchmark['benchmark'](...$benchmark['params']);
       $end = microtime(true);
       $cpuTime = ($end - $start) * 1000000; //Convert seconds to microseconds
       $rawTimings[] = $cpuTime;
@@ -44,9 +44,9 @@ class Benchmark
     $this->iterations = $iterations;
     return $this;
   }
-  public function add($name, $benchmark)
+  public function add($name, $benchmark, ...$params)
   {
-    $this->benchmarks[$name] = $benchmark;
+    $this->benchmarks[$name] = ['benchmark' => $benchmark, 'params' => $params];
     return $this;
   }
   public function run()

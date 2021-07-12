@@ -1,9 +1,7 @@
 const fs = require("fs");
-const path = require("path");
 
-function fileread() {
-  let demoFilePath = path.resolve(__dirname, "../data/demo.txt");
-  let content = fs.readFileSync(demoFilePath);
+function fileread(path) {
+  let content = fs.readFileSync(path);
   return content;
 }
 
