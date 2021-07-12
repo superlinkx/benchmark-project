@@ -40,3 +40,7 @@ There is a `.env.template` file tracked in the project root. If your uid is 1000
 ## Contribute
 
 Feel free to file an issue with any features you'd like to see. If you find a bug, please create a new issue with as much detail as possible. Pull requests are welcome, just file an issue to track it.
+
+## Credits
+
+This project was inspired by [http://grigorov.website/blog/performance-comparison-php-vs-node-js](http://grigorov.website/blog/performance-comparison-php-vs-node-js). I wanted to take the testing further and look closer at language characteristics as well as server application performance metrics. Many of my basic tests are derivative of his tests.
