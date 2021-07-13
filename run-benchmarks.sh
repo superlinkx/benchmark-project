@@ -25,7 +25,6 @@ docker-compose -f go/containers/cli/docker-compose.yml build > /dev/null
 echo "Running Go CLI Benchmarks"
 docker-compose -f go/containers/cli/docker-compose.yml up
 
-exit
 ### API
 ## Node
 # HTTP
